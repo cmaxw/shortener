@@ -24,7 +24,7 @@ describe UrlsController do
   # Url. As you add validations to Url, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "destination" => "MyString" }
+    { "short_code" => "MyString" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe UrlsController do
       it "assigns a newly created but unsaved url as @url" do
         # Trigger the behavior that occurs when invalid params are submitted
         Url.any_instance.stub(:save).and_return(false)
-        post :create, {:url => { "destination" => "invalid value" }}, valid_session
+        post :create, {:url => { "short_code" => "invalid value" }}, valid_session
         assigns(:url).should be_a_new(Url)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Url.any_instance.stub(:save).and_return(false)
-        post :create, {:url => { "destination" => "invalid value" }}, valid_session
+        post :create, {:url => { "short_code" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe UrlsController do
         # specifies that the Url created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Url.any_instance.should_receive(:update_attributes).with({ "destination" => "MyString" })
-        put :update, {:id => url.to_param, :url => { "destination" => "MyString" }}, valid_session
+        Url.any_instance.should_receive(:update_attributes).with({ "short_code" => "MyString" })
+        put :update, {:id => url.to_param, :url => { "short_code" => "MyString" }}, valid_session
       end
 
       it "assigns the requested url as @url" do
@@ -132,7 +132,7 @@ describe UrlsController do
         url = Url.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Url.any_instance.stub(:save).and_return(false)
-        put :update, {:id => url.to_param, :url => { "destination" => "invalid value" }}, valid_session
+        put :update, {:id => url.to_param, :url => { "short_code" => "invalid value" }}, valid_session
         assigns(:url).should eq(url)
       end
 
@@ -140,7 +140,7 @@ describe UrlsController do
         url = Url.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Url.any_instance.stub(:save).and_return(false)
-        put :update, {:id => url.to_param, :url => { "destination" => "invalid value" }}, valid_session
+        put :update, {:id => url.to_param, :url => { "short_code" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

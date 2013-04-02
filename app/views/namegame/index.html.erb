@@ -1,0 +1,13 @@
+<%= form_tag '/namegame/index', :multipart => true do %>
+  <%= label_tag :name %>
+  <%= file_field_tag :name %>
+  <%= submit_tag "Submit" %>
+<% end %>
+
+Your name is: <%= @name %><br>
+<% if @name %>
+  filename: <%= @name.original_filename %><br>
+  mime: <%= @name.content_type %><br>
+  content: @name.read
+<% end %>
+

@@ -2,24 +2,24 @@
 
 <table>
   <tr>
-    <th>Destination</th>
-    <th>Slug</th>
+    <%= table_header "Short code" %>
+    <th>Target</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @urls.each do |url| %>
-  <tr>
-    <td><%= url.destination %></td>
-    <td><%= url.slug %></td>
-    <td><%= link_to 'Show', url %></td>
-    <td><%= link_to 'Edit', edit_url_path(url) %></td>
-    <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <%= render :partial => "urls/url", :collection => @urls %>
+  <% @urls.each do |url| %>
+    <%= render :partial => "urls/url", :object => url, :locals => {} %>
+  <% end %>
+  <%= link_to image_tag("rails.png"), "/" %>
 </table>
 
 <br />
 
 <%= link_to 'New Url', new_url_path %>
+
+<% content_for(:before_view) do %>
+  <h2>Content For Before View</h2>
+<% end %>
